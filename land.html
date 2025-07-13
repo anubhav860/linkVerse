@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkVerse</title>
+  <link rel="stylesheet" href="style2.css">
+  <link rel="icon" type="image/png" href="linkverseLogoTab.png">
+</head>
+<body>
+    <header>
+        <div class="topbar">
+          <img src="LinkverseLogo.png" alt="Logo" class="logo">
+        </div>
+        <nav class="navbar">
+            <a href="#section1">Anime</a>
+            <a href="#section2">Movies</a>
+            <a href="#section3">Games</a>
+            <a href="#section4">Torrent</a>
+            <a href="#section5">Subscription</a>
+            <a href="#section6">Extra</a>
+            <a href="javascript:void(0)" onclick="openRandomSite()">🎲 Lucky</a>
+            <a href="#home">Home Page</a>
+        </nav>
+      </header>
+      
+      
+
+  <section section id="section1">
+    <h2>Anime</h2>
+    <div class="site-buttons">
+      <a href="https://kayoanime.com/" class="site-btn"><img src="KayoAnime.png" alt=""></a>
+      <a href="https://subsplease.org/" class="site-btn"><img src="subsplease.png" alt=""></a>
+      <a href="https://animepahe.ru/" class="site-btn"><img src="animepahe.png" alt=""></a>
+      <!--a href="#" class="site-btn"><img src="images/logo.png" alt=""></a-->
+    </div>
+  </section>
+
+  <section section id="section2">
+    <h2>Movies</h2>
+    <div class="site-buttons">
+      <a href="https://vegamovies.cd/" class="site-btn"><img src="vegam.png" alt=""> </a>
+      <a href="https://dotmovies.ac/" class="site-btn"><img src="dotm.png" alt=""> </a>
+      <a href="https://moviesmod.chat/" class="site-btn"><img src="moviesm.png" alt=""> </a>
+      <a href="https://topmovies.rodeo/" class="site-btn"><img src="topm.png" alt=""> </a>
+    </div>
+  </section>
+
+  <section section id="section3">
+    <h2>Games</h2>
+    <div class="site-buttons">
+      <a href="https://gamesleech.com/" class="site-btn"><img src="gamesl.png" alt=""></a>
+      <!--a href="#" class="site-btn"><img src="images/logo.png" alt=""><span>Site 10</span></a>
+      <a href="#" class="site-btn"><img src="images/logo.png" alt=""><span>Site 11</span></a>
+      <a href="#" class="site-btn"><img src="images/logo.png" alt=""><span>Site 12</span></a-->
+    </div>
+  </section>
+
+  <section>
+    <h2>Torrent</h2>
+    <div class="site-buttons">
+      <a href="https://piratebayproxy.net/" class="site-btn"><img src="piratebay.png" alt=""> </a>
+      <a href="https://1337x.hashhackers.com/" class="site-btn"><img src="13377x.png" alt=""> </a>
+      <a href="https://subsplease.org/" class="site-btn"><img src="subsplease.png" alt=""></a>
+      <!--a href="#" class="site-btn"><img src="images/logo.png" alt=""><span>Site 16</span></a-->
+    </div>
+  </section>
+
+  <section>
+    <h2>Subscription</h2>
+    <div class="site-buttons">
+      <a href="#" class="site-btn"><img src="images/logo.png" alt=""> </a>
+      <a href="#" class="site-btn"><img src="images/logo.png" alt=""> </a>
+      <a href="#" class="site-btn"><img src="images/logo.png" alt=""> </a>
+      <a href="#" class="site-btn"><img src="images/logo.png" alt=""> </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Extra</h2>
+    <div class="site-buttons">
+      <a href="#" class="site-btn"><img src="images/logo.png" alt=""> </a>
+      <a href="#" class="site-btn"><img src="images/logo.png" alt=""> </a>
+      <a href="#" class="site-btn"><img src="images/logo.png" alt=""> </a>
+      <a href="#" class="site-btn"><img src="images/logo.png" alt=""> </a>
+    </div>
+  </section>
+  <script>
+    document.querySelectorAll('.site-btn').forEach(link => link.setAttribute('target', '_blank'));
+    function openRandomSite() {
+      const links = document.querySelectorAll('.site-btn');
+      if (links.length === 0) return; // safety check
+      const randomIndex = Math.floor(Math.random() * links.length);
+      const randomUrl = links[randomIndex].href;
+      window.open(randomUrl, '_blank');
+    }
+  </script>
+</body>
+</html>
