@@ -12,16 +12,19 @@
         <div class="topbar">
           <img src="LinkverseLogo.png" alt="Logo" class="logo">
         </div>
-        <nav class="navbar">
-            <a href="#section1">Anime</a>
-            <a href="#section2">Movies</a>
-            <a href="#section3">Games</a>
-            <a href="#section4">Torrent</a>
-            <a href="#section5">Subscription</a>
-            <a href="#section6">Extra</a>
-            <a href="javascript:void(0)" onclick="openRandomSite()">🎲 Lucky</a>
-            <a href="index.html">Home Page</a>
-        </nav>
+      <nav class="navbar">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="nav-links">
+          <a href="#section1">Anime</a>
+          <a href="#section2">Movies</a>
+          <a href="#section3">Games</a>
+          <a href="#section4">Torrent</a>
+          <a href="#section5">Subscription</a>
+          <a href="#section6">Extra</a>
+          <a href="javascript:void(0)" onclick="openRandomSite()">🎲 Lucky</a>
+          <a href="index.html">Home Page</a>
+        </div>
+      </nav>
       </header>
       
       
@@ -94,6 +97,20 @@
       const randomUrl = links[randomIndex].href;
       window.open(randomUrl, '_blank');
     }
+    function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    nav.classList.toggle('active');
+  }
+
+  // Keep your existing script too:
+  document.querySelectorAll('.site-btn').forEach(link => link.setAttribute('target', '_blank'));
+  function openRandomSite() {
+    const links = document.querySelectorAll('.site-btn');
+    if (links.length === 0) return;
+    const randomIndex = Math.floor(Math.random() * links.length);
+    const randomUrl = links[randomIndex].href;
+    window.open(randomUrl, '_blank');
+  }
   </script>
 </body>
 </html>

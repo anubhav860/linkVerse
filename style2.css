@@ -6,67 +6,41 @@ body {
     color: #fff;
 }
 
+/* Remove fixed background on smaller screens for better performance and fit */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+        background-position: center center;
+    }
+}
+
 header {
     text-align: center;
     padding: 40px 20px;
     background: rgba(0,0,0,0.5);
 }
 
-header h1 {
-    font-size: 3.2em;
-    font-weight: 900;
-    color: #a020f0;  /* strong purple color */
-    letter-spacing: 2px;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 10px;
-    font-family: 'Segoe UI', 'Trebuchet MS', sans-serif;
-}
-header h1::after {
-    content: '';
-    position: absolute;
-    left: 20%;
-    right: 20%;
-    bottom: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #a020f0, #ff69b4, #a020f0);
-    border-radius: 2px;
-    animation: gradientMove 5s ease infinite;
-}
-.topbar {
-    display: flex;
-    align-items: center;
-    background: rgba(34, 34, 34, 0.8);  /* 0.8 = slightly transparent */
-    padding: 10px 20px;
-}
-
-
 .logo {
     opacity: 0.7;
-    width: 150px;   /* bigger width */
-    height: 50px;  /* keep aspect ratio */
+    width: 150px;
+    height: auto; /* keep aspect ratio */
     margin-right: 12px;
 }
 
-.sitename {
-    font-size: 1.8em;
-    color: #a020f0;
-    font-weight: bold;
-}
-
-/* Navbar tightly packed */
 .navbar {
     display: flex;
-    background: rgba(4, 16, 35, 0.9); /* darker blue, slightly transparent */
-    overflow: hidden;
+    flex-wrap: wrap; /* allow wrapping on small screens */
+    background: rgba(4, 16, 35, 0.9);
+    overflow-x: auto; /* allow horizontal scroll if needed */
 }
 
 .navbar a {
-    flex: 1; /* make all buttons equal width */
+    flex: 1;
+    min-width: 80px; /* don't shrink too much */
     text-align: center;
     color: #fff;
     text-decoration: none;
-    padding: 14px 0; /* vertical padding */
+    padding: 14px 0;
     background: #444;
     font-weight: 500;
     border-right: 1px solid #555;
@@ -82,15 +56,14 @@ header h1::after {
     color: #fff;
 }
 
-
 section {
     margin: 40px auto;
     max-width: 1000px;
     background: rgba(0,0,0,0.6);
     padding: 20px;
     border-radius: 20px;
-    border: 2px solid #a020f0; /* Purple border */
-    box-shadow: 0 0 15px 3px #a020f0; /* Purple glow */
+    border: 2px solid #a020f0;
+    box-shadow: 0 0 15px 3px #a020f0;
 }
 
 section h2 {
@@ -111,7 +84,6 @@ section h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-decoration: none;
     color: #fff;
     background: rgba(255,255,255,0.1);
@@ -126,15 +98,119 @@ section h2 {
 
 .site-btn img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;          /* fill box fully, may crop sides */
-    opacity: 0.7;
+    height: auto; /* maintain aspect ratio */
+    object-fit: contain; /* ensure full logo is visible */
+    opacity: 0.8;
     transition: opacity 0.3s, transform 0.3s;
 }
+
 .site-btn:hover {
     opacity: 1;
-    transform: scale(1.2) rotate(5deg);
-    background: rgba(255, 105, 180, 0.3); /* pink background on hover */
-    border-color: #ff69b4; /* pink border on hover */
+    transform: scale(1.1);
+    background: rgba(255, 105, 180, 0.3);
+    border-color: #ff69b4;
 }
 
+/* ✅ Make it more responsive */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 10px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    section {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    section h2 {
+        font-size: 1.5em;
+    }
+
+    .site-btn {
+        width: 120px;
+        padding: 10px;
+        margin: 8px;
+    }
+
+    .navbar a {
+        font-size: 0.9em;
+        padding: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 100px;
+    }
+
+    section h2 {
+        font-size: 1.2em;
+    }
+
+    .site-btn {
+        width: 100px;
+        padding: 8px;
+    }
+
+    .navbar a {
+        font-size: 0.8em;
+        padding: 8px 0;
+    }
+}
+
+/* Hamburger hidden on desktop */
+.hamburger {
+    display: none;
+    font-size: 2em;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Navbar links container */
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #555;
+        padding: 12px;
+        text-align: left;
+    }
+}
+.topbar {
+    display: flex;
+    justify-content: space-between; /* logo left, hamburger right */
+    align-items: center;
+    background: rgba(34, 34, 34, 0.8);
+    padding: 10px 20px;
+}
